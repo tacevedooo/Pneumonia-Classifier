@@ -164,4 +164,4 @@ print(f"Test Accuracy: {test_accuracy:.4f}")
 # =========================
 # Save model
 # =========================
-torch.save(model.state_dict(), 'pneumonia_classifier.pth')
+torch.save(model.state_dict(), 'models/pneumonia_classifier.pth')

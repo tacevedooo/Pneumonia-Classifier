@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pneumonia Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background: #f5f6fa; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        h1 { color: #2f3640; margin-bottom: 20px; }
+        input[type=file] { margin: 20px 0; }
+        button { 
+            padding: 10px 25px; background: #3498db; color: white; border: none; border-radius: 8px; cursor: pointer; 
+            font-size: 16px; transition: 0.3s; 
+        }
+        button:hover { background: #2980b9; }
+        .results { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .results div { text-align: center; }
+        .results img { max-width: 250px; border-radius: 12px; border: 2px solid #ccc; }
+        .prediction { font-size: 20px; font-weight: 700; color: #e84118; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Pneumonia Classifier</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required>
+            <br>
+            <button type="submit">Upload & Predict</button>
+        </form>
+
+        {% if original_image and prediction %}
+        <div class="results">
+            <div>
+                <h3>Uploaded Image</h3>
+                <img src="{{ original_image }}" alt="Image">
+            </div>
+            <div>
+                <h3>Prediction</h3>
+                <p class="prediction">{{ prediction }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

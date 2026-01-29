@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 from torchvision import models, transforms
 from PIL import Image
-import runpod
+import runpod #type: ignore
 
 # =========================
 # Device
@@ -19,7 +19,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # =========================
 model = models.resnet18(weights=None)
 model.fc = nn.Linear(model.fc.in_features, 2)
-model.load_state_dict(torch.load('pneumonia_classifier.pth', map_location=device))
+model.load_state_dict(torch.load('models/pneumonia_classifier.pth', map_location=device))
 model = model.to(device)
 model.eval()
 
